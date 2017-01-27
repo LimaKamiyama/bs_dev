@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="<?php bloginfo( 'charset' ); ?>"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>ブレインシナジー あなたの頭の中をシェアしよう</title>
+<meta name="description"  content="looksme" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Arima+Madurai" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Arimo|Open+Sans+Condensed:300" rel="stylesheet">
+
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function ($){
+    $(function () {
+      var $body = $('body');
+
+      $('#js_btn').click(function () {
+          $body.addClass('open');
+      });
+
+      $('#js_nav').click(function () {
+          $body.removeClass('open');
+      });
+    });
+
+    $(function () {
+        $('a[href="#"]').click(function () {
+            return false;
+        });
+    });
+  });
+</script>
+
+</head>
+
+<body>
+
+<header>
+    <div class="header01">
+        <a href="#"><span class="hamburger_icon" id="js_btn"><i class="fa fa-bars" aria-hidden="true"></i></span></a>
+        <a class="logo" href="/">BrainSynergy</a>
+        <% if user_signed_in? %>
+        <nav class="menu" id="js_nav">
+            <ul>
+            <li><a href="../users/<%= current_user.id %>" class="">あなたのlog</a></li>
+            <li><a href="#" class="">あなたのポートフォリオ</a></li>
+            <li><a href="#" class="">Synergyを見つける</a></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, class: "final", method: :delete %></li>
+            </ul>
+        </nav>
+        <% else %>
+        <nav class="menu" id="js_nav">
+            <ul>
+            <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+            <li class="final"><%= link_to "新規登録", new_user_registration_path, class: 'final' %></li>
+            </ul>
+        </nav>
+        <% end %>
+    </div>
+</header>
+
+
+<div class="friends_list">
+    <div><img src="icon_sample.jpg"></div>
+    <div><img src="icon_sample.jpg"></div>
+    <div><img src="icon_sample.jpg"></div>
+    <div><img src="icon_sample.jpg"></div>
+    <div><img src="icon_sample.jpg"></div>
+    <div><img src="icon_sample.jpg"></div>
+    <div><img src="icon_sample.jpg"></div>
+    <div><img src="icon_sample.jpg"></div>
+    <div><img src="icon_sample.jpg"></div>
+    <div><img src="icon_sample.jpg"></div>
+    <div><img src="icon_sample.jpg"></div>
+</div>
+
+
+<div class="wrapper01">
+    <div class="contents_area">
+        <div class="record_area">
+            <div class="thought_form">
+                <%= form_tag('/thoughts/#{thought.id}', method: :post) do %>
+                    <h3>思考ログの記入　<a href="users/thoughts"><span class="ichiran">一覧を表示>></span></a></h3>
+                    <div>
+                    <select name="thought_genre" type="text" name="genre">
+                    <option value="genre01">プログラミングで出来ること</option>
+                    <option value="genre02">起業して何をするか</option>
+                    <option value="genre03">新規ジャンルの追加</option>
+                    </select>
+                    </div>
+                    <div>
+                    <input type="text" name="tag" size="30" maxlength="20" placeholder="タグを記入"></td>
+                    </div>
+                    <div>
+                    <textarea id="thought_record" type="text" name="text" cols="40" rows="4" maxlength="20" placeholder="今考えていることを記入して下さい(必須)"></textarea>
+                    </div>
+                    <div>
+                    <select type="text" name="open_area">
+                    <option value="expose_area01">公開（全ての人に公開されます）</option>
+                    <option value="expose_area02">友達のみに公開</option>
+                    <option value="expose_area03">非公開（自分のみ）</option>
+                    </select>
+                    </div>
+                    <div>
+                    <%= submit_tag "投稿", name: "thought_button" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<footer>
+  <div>Copyrights(c) BrainSynergy All rights reserved.</div>
+</footer>
+
+</body>
+</html>
