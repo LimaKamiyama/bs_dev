@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
-  get 'home/new_thought' => 'home#new_thought'
-  get 'home/new_action' => 'home#new_action'
+  get '/new_thought' => 'home#new_thought'
+  get '/new_action' => 'home#new_action'
   post 'thoughts' => 'home#create'
   post 'actions' => 'home#create'
+  get 'thoughts' => 'home#show_thoughts'
+  get 'actions' => 'home#show_actions'
   delete 'thoughts/:id' => 'home#destroy'
   delete 'actions/:id' => 'home#destroy'
   get 'thoughts/:id/edit' => 'home#edit_thought'

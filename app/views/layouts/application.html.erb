@@ -79,7 +79,13 @@ jQuery(document).ready(function ($){
 
     $(document).click(function() {
       $('.more_list').hide();
+      $('.thought_delete').fadeOut();
     });
+
+    $('.delete_link').click(function(){
+      $(this).parents('.record').find('.thought_delete').fadeIn();
+      event.stopPropagation();
+    })
   });
 });
 </script>

@@ -1,0 +1,13 @@
+<div class="wrapper01">
+    <div class="contents_area">
+        <div class="record_area">
+            <div class="action_form">
+                <h3>思考ログの一覧</h3>
+                <% @actions.each do |action| %>
+                <div><%= action.text %></div>
+                <% end %>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -19,6 +19,15 @@ class HomeController < ApplicationController
     elsif params[:action_button]
       @actions = Action.create(genre: action_params[:genre], text: action_params[:text], open_area: action_params[:open_area], image: action_params[:image], user_id: current_user.id)
     end
+    redirect_to action: :index
+  end
+
+  def show_thoughts
+    @thoughts = Thought.all
+  end
+
+  def show_actions
+    @actions = Action.all
   end
 
   def destroy
@@ -34,6 +43,13 @@ class HomeController < ApplicationController
           end
     end
   end
+
+  # def destroy_thought
+  #   thought = Thought.find(params[:id])
+  #   if thought.user_id == current_user.id
+  #       thought.destroy
+  #   end
+  # end
 
   def edit_thought
     @thought = Thought.find(params[:id])

@@ -2,8 +2,8 @@
     <div class="contents_area">
         <div class="record_area">
             <div class="thought_form">
-                <%= form_tag('/thoughts/#{thought.id}', method: :post) do %>
-                    <h3>思考ログの記入　<a href="users/thoughts"><span class="ichiran">一覧を表示>></span></a></h3>
+                <%= form_tag('/thoughts', method: :post) do %>
+                    <h3>思考ログの記入</h3>
                     <div>
                     <select name="thought_genre" type="text" name="genre">
                     <option value="genre01">プログラミングで出来ること</option>

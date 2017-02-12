@@ -1,0 +1,13 @@
+<div class="wrapper01">
+    <div class="contents_area">
+        <div class="record_area">
+            <div class="thought_form">
+                <h3>思考ログの一覧</h3>
+                <% @thoughts.each do |thought| %>
+                <div><%= thought.text %></div>
+                <% end %>
+            </div>
+
+        </div>
+    </div>
+</div>

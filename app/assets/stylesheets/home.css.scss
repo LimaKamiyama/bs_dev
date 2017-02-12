@@ -34,6 +34,19 @@ ul.more_list {
     padding: 0;
 }
 
+.thought_delete {
+    display: none;
+    position: fixed;
+    background-color: #fff;
+    padding: 20px 60px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 1px solid #c7c7c7;
+    border-radius: 10px;
+}
+
 .thought_form div, .action_form div {
     margin: 20px 0;
 }

@@ -10,7 +10,8 @@
         <div class="all_record">
             <div class="thought_form">
                 <h3>みんなの頭の中</h3>
-                <div><a href="/home/new_thought">≫Brain share</a></div>
+                <div><a href="/new_thought">≫Brain share</a></div>
+                <div><a href="/thoughts"><span class="ichiran">≫一覧を表示</span></a></div>
                 <div class="all_record">
                 <% @thoughts.each do |thought| %>
                     <div class="record">
@@ -21,14 +22,17 @@
                                 <li><%= link_to '詳細', "/thoughts/#{thought.id}", method: :get %></li>
                                 <% if user_signed_in? && current_user.id == thought.user_id %>
                                 <li><%= link_to '編集', "/thoughts/#{thought.id}/edit", method: :get %></li>
-                                <li><%= form_tag("/thoughts/#{thought.id}", method: :delete) do %>
-                                <%= submit_tag "削除", name: "thought_button" %></li>
-                                <% end %>
+                                <li><a href="#" class="delete_link">削除</a></li>
                                 <% end %>
                             </ul>
                         <div><%= thought.text %></div>
-                        <!-- <div class="thought_detail">
-                        </div> -->
+                        <div class="thought_delete">
+                            <div>本当に削除しますか？</div>
+                            <%= form_tag("/thoughts/#{thought.id}", method: :delete) do %>
+                            <%= submit_tag "削除", name: "thought_button" %>
+                            <% end %>
+                            <span class="cancel">キャンセル</span>
+                        </div>
                     </div>
                 <% end %>
                 </div>
@@ -37,7 +41,8 @@
 
             <div class="action_form">
                 <h3>みんなのdone</h3>
-                <div><a href="../home/new_action">≫Action share</a></div>
+                <div><a href="/new_action">≫Action share</a></div>
+                <div><a href="/actions"><span class="ichiran">≫一覧を表示</span></a></div>
                 <div class="all_record">
                 <% @actions.each do |action| %>
                     <% if user_signed_in? && current_user.id == action.user_id %>
