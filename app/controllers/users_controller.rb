@@ -6,4 +6,8 @@ class UsersController < ApplicationController
     @actions = current_user.actions.page(params[:page]).per(10).order('created_at desc')
   end
 
+  def destroy
+    user.destroy
+  end
+
 end
