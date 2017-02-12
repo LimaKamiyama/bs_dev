@@ -1,0 +1,21 @@
+jQuery(document).ready(function ($){
+  $(function () {
+    var $body = $('body');
+
+    $('#js_btn').click(function () {
+        $body.addClass('open');
+    });
+
+    $('#js_nav').click(function () {
+        $body.removeClass('open');
+    });
+
+    $('a[href="#"]').click(function () {
+          return false;
+      });
+
+    $('.record span').click(function () {
+    $(this).parent('.record').find('.more_list').slideToggle();
+    });
+  });
+});

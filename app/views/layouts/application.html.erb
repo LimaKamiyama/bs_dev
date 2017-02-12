@@ -16,30 +16,6 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-    jQuery(document).ready(function ($){
-      $(function () {
-        var $body = $('body');
-
-        $('#js_btn').click(function () {
-            $body.addClass('open');
-        });
-
-        $('#js_nav').click(function () {
-            $body.removeClass('open');
-        });
-
-        $('a[href="#"]').click(function () {
-              return false;
-          });
-
-        $('.record span').click(function () {
-        $(this).parent('.record').find('.more_list').slideToggle();
-        });
-      });
-    });
-  </script>
-
 
 </head>
 
@@ -77,6 +53,8 @@
 <footer>
   <div>Copyrights(c) BrainSynergy All rights reserved.</div>
 </footer>
+
+<%= javascript_include_tag 'custom/script' %>
 
 </body>
 </html>
