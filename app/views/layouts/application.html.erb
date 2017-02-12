@@ -68,11 +68,17 @@ jQuery(document).ready(function ($){
     });
 
     $('a[href="#"]').click(function () {
-          return false;
+        return false;
       });
 
-    $('.record span').click(function () {
-    $(this).parent('.record').find('.more_list').slideToggle();
+    $('.record .detail_arrow').click(function () {
+        $('.more_list').hide();
+        $(this).parent('.record').find('.more_list').slideToggle(200);
+        event.stopPropagation();
+    });
+
+    $(document).click(function() {
+      $('.more_list').hide();
     });
   });
 });

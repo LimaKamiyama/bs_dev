@@ -13,23 +13,27 @@
                 <div><a href="/home/new_thought">≫Brain share</a></div>
                 <div class="all_record">
                 <% @thoughts.each do |thought| %>
-                <div class="record">
-                <%= image_tag 'icon_sample.jpg' %><b><%= thought.user.nickname %></b>　<%= thought.text %>
-                        <span>▼</span>
-                        <ul class="more_list">
-                            <li><%= link_to '詳細', "/thoughts/#{thought.id}", method: :get %></li>
-                            <% if user_signed_in? && current_user.id == thought.user_id %>
-                            <li><%= link_to '編集', "/thoughts/#{thought.id}/edit", method: :get %></li>
-                            <li><%= form_tag("/thoughts/#{thought.id}", method: :delete) do %>
-                            <%= submit_tag "削除", name: "thought_button" %></li>
-                            <% end %>
-                        </ul>
+                    <div class="record">
+                        <%= image_tag 'icon_sample.jpg' %>
+                        <span class="user_name"><%= thought.user.nickname %></span>
+                        <span class="detail_arrow">▼</span>
+                            <ul class="more_list">
+                                <li><%= link_to '詳細', "/thoughts/#{thought.id}", method: :get %></li>
+                                <% if user_signed_in? && current_user.id == thought.user_id %>
+                                <li><%= link_to '編集', "/thoughts/#{thought.id}/edit", method: :get %></li>
+                                <li><%= form_tag("/thoughts/#{thought.id}", method: :delete) do %>
+                                <%= submit_tag "削除", name: "thought_button" %></li>
+                                <% end %>
+                                <% end %>
+                            </ul>
+                        <div><%= thought.text %></div>
+                        <!-- <div class="thought_detail">
+                        </div> -->
+                    </div>
                 <% end %>
                 </div>
-                <% end %>
-                </div>
-                <%= paginate(@thoughts) %>
             </div>
+            <%= paginate(@thoughts) %>
 
             <div class="action_form">
                 <h3>みんなのdone</h3>
@@ -38,7 +42,7 @@
                 <% @actions.each do |action| %>
                     <% if user_signed_in? && current_user.id == action.user_id %>
                     <div class="record">
-                    <%= image_tag 'icon_sample.jpg' %><%= action.user.nickname %><%= action.text %>
+                    <%= image_tag 'icon_sample.jpg' %><b><%= action.user.nickname %></b><%= action.text %>
                         <span>▼</span>
                         <ul class="more_list">
                             <li>
@@ -48,8 +52,8 @@
                             <% end %>
                             </li>
                         </ul>
-                    <% end %>
                     </div>
+                    <% end %>
                 <% end %>
                 </div>
                 <%= paginate(@actions) %>
@@ -102,7 +106,7 @@
             <div><a href="#">一覧へ >></a></div>
         </div>
 
-<% end %>
+    <% end %>
 
     </div>
 </div>
@@ -113,4 +117,3 @@
         <p>2017.02.12・・・絶賛改修中！</p>
     </div>
 </div>
-
