@@ -77,6 +77,12 @@ jQuery(document).ready(function ($){
         event.stopPropagation();
     });
 
+    $('.thought_detail .detail_arrow').click(function () {
+        $('.more_list').hide();
+        $(this).parent('.thought_detail').find('.more_list').slideToggle(200);
+        event.stopPropagation();
+    });
+
     $(document).click(function() {
       $('.more_list').hide();
       $('.thought_delete').fadeOut();

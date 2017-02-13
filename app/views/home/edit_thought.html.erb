@@ -5,7 +5,7 @@
                 <%= form_tag("/thoughts/#{@thought.id}", method: :patch) do %>
                     <h3>思考ログの記入</h3>
                     <div>
-                    <select name="thought_genre" type="text" name="genre">
+                    <select name="thought_genre" type="text" name="genre" value="<%= @thought.tag %>">
                     <option value="genre01">プログラミングで出来ること</option>
                     <option value="genre02">起業して何をするか</option>
                     <option value="genre03">新規ジャンルの追加</option>
@@ -15,10 +15,11 @@
                     <input type="text" name="tag" size="30" maxlength="20" placeholder="タグを記入"></td>
                     </div>
                     <div>
-                    <textarea id="thought_record" type="text" name="text" cols="40" rows="4" maxlength="20"><%= @thought.text %></textarea>
+                    <textarea id="thought_record" type="title" name="title" cols="40" rows="2" maxlength="30"><%= @thought.title %></textarea>
+                    <textarea id="thought_record" type="text" name="text" cols="40" rows="4" maxlength="2000"><%= @thought.text %></textarea>
                     </div>
                     <div>
-                    <select type="text" name="open_area">
+                    <select type="text" name="open_area" value="<%= @thought.open_area %>">
                     <option value="expose_area01">公開（全ての人に公開されます）</option>
                     <option value="expose_area02">友達のみに公開</option>
                     <option value="expose_area03">非公開（自分のみ）</option>

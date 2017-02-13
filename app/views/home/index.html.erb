@@ -25,7 +25,7 @@
                                 <li><a href="#" class="delete_link">削除</a></li>
                                 <% end %>
                             </ul>
-                        <div><%= thought.text %></div>
+                        <div><%= thought.title %></div>
                         <div class="thought_delete">
                             <div>本当に削除しますか？</div>
                             <%= form_tag("/thoughts/#{thought.id}", method: :delete) do %>

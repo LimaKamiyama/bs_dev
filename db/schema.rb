@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109133825) do
+ActiveRecord::Schema.define(version: 20170213140856) do
 
   create_table "actions", force: :cascade do |t|
     t.text     "genre",      limit: 65535
@@ -34,12 +34,13 @@ ActiveRecord::Schema.define(version: 20170109133825) do
   create_table "thoughts", force: :cascade do |t|
     t.text     "genre",      limit: 65535
     t.text     "tag",        limit: 65535
-    t.text     "text",       limit: 65535
     t.text     "open_area",  limit: 65535
     t.text     "image",      limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",    limit: 4
+    t.text     "text",       limit: 65535
+    t.string   "title",      limit: 255
   end
 
   create_table "users", force: :cascade do |t|

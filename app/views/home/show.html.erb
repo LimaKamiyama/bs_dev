@@ -2,21 +2,19 @@
 <div class="wrapper01">
     <div class="contents_area">
         <div class="all_record">
-            <div class="thought_form">
+            <div class="thought_detail">
                     <% if user_signed_in? && current_user.id == @thought.user_id %>
-                        <div>
-                        <span>▼</span>
+                        <span class="detail_arrow">▼</span>
                         <ul class="more_list">
-                            <li>
-                            <%= link_to '編集', "/thoughts/#{@thought.id}/edit", method: :get %>
+                            <li><%= link_to '編集', "/thoughts/#{@thought.id}/edit", method: :get %></li>
                             <%= form_tag("/thoughts/#{@thought.id}", method: :delete) do %>
-                            <%= submit_tag "削除", name: "thought_button" %>
+                            <li><%= submit_tag "削除", name: "thought_button" %></li>
                             <% end %>
-                            </li>
                         </ul>
-                        </div>
                     <% end %>
-                    <div><%= @thought.user.nickname %><%= @thought.text %></div>
+                    <div><%= @thought.user.nickname %></div>
+                    <div><%= @thought.title %></div>
+                    <div><%= @thought.text %></div>
             </div>
         </div>
         <% if current_user %>

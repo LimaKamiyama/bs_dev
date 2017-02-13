@@ -15,7 +15,7 @@ class HomeController < ApplicationController
 
   def create
     if params[:thought_button]
-      @thoughts = Thought.create(tag: thought_params[:tag], text: thought_params[:text], open_area: thought_params[:open_area], image: thought_params[:image], user_id: current_user.id)
+      @thoughts = Thought.create(genre: thought_params[:genre], tag: thought_params[:tag], text: thought_params[:text], title: thought_params[:title], open_area: thought_params[:open_area], image: thought_params[:image], user_id: current_user.id)
     elsif params[:action_button]
       @actions = Action.create(genre: action_params[:genre], text: action_params[:text], open_area: action_params[:open_area], image: action_params[:image], user_id: current_user.id)
     end
