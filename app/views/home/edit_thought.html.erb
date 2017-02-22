@@ -5,18 +5,19 @@
                 <%= form_tag("/thoughts/#{@thought.id}", method: :patch) do %>
                     <h3>思考ログの記入</h3>
                     <div>
-                    <select name="thought_genre" type="text" name="genre" value="<%= @thought.tag %>">
+                    <!-- <select name="thought_genre" type="text" name="genre" value="<%= @thought.tag %>">
                     <option value="genre01">プログラミングで出来ること</option>
                     <option value="genre02">起業して何をするか</option>
                     <option value="genre03">新規ジャンルの追加</option>
-                    </select>
+                    </select> -->
+                    <%= select :page, :genre, [["プログラミングで出来ること", "genre01"],["起業して何をするか", "genre02"],["新規ジャンルの追加", "genre03"]],  :prompt => @thought.genre %>
                     </div>
                     <div>
-                    <input type="text" name="tag" size="30" maxlength="20" placeholder="タグを記入"></td>
+                    <%= text_field_tag :tag, @thought.tag %>
                     </div>
                     <div>
-                    <textarea id="thought_record" type="title" name="title" cols="40" rows="2" maxlength="30"><%= @thought.title %></textarea>
-                    <textarea id="thought_record" type="text" name="text" cols="40" rows="4" maxlength="2000"><%= @thought.text %></textarea>
+                    <%= text_field_tag :title, @thought.title %>
+                    <%= text_area_tag :text, @thought.text %>
                     </div>
                     <div>
                     <select type="text" name="open_area" value="<%= @thought.open_area %>">

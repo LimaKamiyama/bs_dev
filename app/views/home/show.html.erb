@@ -4,7 +4,7 @@
         <div class="all_record">
             <div class="thought_detail">
                     <% if user_signed_in? && current_user.id == @thought.user_id %>
-                        <span class="detail_arrow">▼</span>
+                        <div class="detail_arrow">▼</div>
                         <ul class="more_list">
                             <li><%= link_to '編集', "/thoughts/#{@thought.id}/edit", method: :get %></li>
                             <%= form_tag("/thoughts/#{@thought.id}", method: :delete) do %>
